@@ -1,0 +1,48 @@
+import type { ScheduleEvent } from "./types";
+
+export const demoSchedule: ScheduleEvent[] = [
+  {
+    id: "s1",
+    time: "10:00 AM",
+    title: "Full Stack Development",
+    type: "Live Class",
+    duration: "1h",
+    status: "live",
+    icon: "video",
+    tileColor: "rose",
+    dotColor: "violet",
+  },
+  {
+    id: "s2",
+    time: "12:00 PM",
+    title: "React.js Q&A Session",
+    type: "Live Class",
+    duration: "1h",
+    status: "upcoming",
+    icon: "chat",
+    tileColor: "violet",
+    dotColor: "blue",
+  },
+  {
+    id: "s3",
+    time: "02:00 PM",
+    title: "Node.js Project Review",
+    type: "Live Class",
+    duration: "1h",
+    status: "upcoming",
+    icon: "board",
+    tileColor: "indigo",
+    dotColor: "emerald",
+  },
+  {
+    id: "s4",
+    time: "04:00 PM",
+    title: "Career Guidance Session",
+    type: "Live Class",
+    duration: "1h",
+    status: "upcoming",
+    icon: "clock",
+    tileColor: "emerald",
+    dotColor: "amber",
+  },
+];

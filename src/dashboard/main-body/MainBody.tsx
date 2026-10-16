@@ -6,6 +6,7 @@ import StudentCourses from "../components/student-courses/StudentCourses";
 import StudentProgress from "../components/student-stats/StudentProgress";
 import PerformanceOverview from "../components/student-stats/PerformanceOverview";
 import TopPerformingStudents from "../components/student-stats/TopPerformingStudents";
+import TodaysSchedule from "../components/todays-schedule/TodaysSchedule";
 
 function MainBody() {
   return (
@@ -28,6 +29,7 @@ function MainBody() {
       </div>
       <div className="flex w-full shrink-0 flex-col gap-4 lg:w-[25%] 2xl:w-[20%]">
         <Calendar />
+        <TodaysSchedule />
       </div>
     </div>
   );

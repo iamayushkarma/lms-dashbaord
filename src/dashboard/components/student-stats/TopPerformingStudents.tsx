@@ -16,17 +16,17 @@ function TopPerformingStudents() {
   return (
     <section className="flex h-full min-w-0 flex-col rounded-2xl border border-slate-100 bg-white p-4 shadow-[0_2px_10px_rgba(99,102,241,0.06)]">
       <div className="flex items-center justify-between gap-2">
-        <h3 className="whitespace-nowrap text-sm font-extrabold text-[#0f1240]">
-          Top Performing Students
-        </h3>
-        <a
-          href="#"
-          className="flex shrink-0 items-center gap-1 text-[11px] font-bold text-[#5b3ff8] hover:text-[#4a2fe0]"
-        >
-          View All
-          <ArrowRight className="h-3 w-3" />
-        </a>
-      </div>
+  <h3 className="min-w-0 truncate text-sm font-extrabold text-[#0f1240]">
+    Top Performing Students
+  </h3>
+  <a
+    href="#"
+    className="flex shrink-0 items-center gap-1 whitespace-nowrap text-[11px] font-bold text-[#5b3ff8] hover:text-[#4a2fe0]"
+  >
+    View All
+    <ArrowRight className="h-3 w-3" />
+  </a>
+</div>
 
       <ul className="mt-3 flex flex-1 flex-col justify-between gap-1.5">
         {STUDENTS.map(({ name, score, avatar }) => (

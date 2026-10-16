@@ -5,7 +5,6 @@ import { demoCourses } from "./data";
 import { ArrowRightIcon, ChevronDownIcon } from "./icons";
 import type { Course, SortKey, TabItem, TabKey } from "./types";
 
-const INITIAL_VISIBLE = 4;
 const PANEL_ID = "student-courses-panel";
 
 const sortOptions: { value: SortKey; label: string }[] = [
@@ -27,15 +26,16 @@ function sortCourses(courses: Course[], sortBy: SortKey) {
 type StudentCoursesProps = {
   courses?: Course[];
   onOpenCourse?: (course: Course) => void;
+  onViewAll?: () => void;
 };
 
 function StudentCourses({
   courses = demoCourses,
   onOpenCourse,
+  onViewAll,
 }: StudentCoursesProps) {
   const [activeTab, setActiveTab] = useState<TabKey>("all");
   const [sortBy, setSortBy] = useState<SortKey>("recent");
-  const [showAll, setShowAll] = useState(false);
   const [bookmarks, setBookmarks] = useState<Set<string>>(new Set());
 
   const tabs: TabItem[] = useMemo(
@@ -60,16 +60,13 @@ function StudentCourses({
     [courses],
   );
 
-  const filtered = useMemo(() => {
+  const visible = useMemo(() => {
     const byTab =
       activeTab === "all"
         ? courses
         : courses.filter((c) => c.status === activeTab);
     return sortCourses(byTab, sortBy);
   }, [courses, activeTab, sortBy]);
-
-  const visible = showAll ? filtered : filtered.slice(0, INITIAL_VISIBLE);
-  const canToggle = showAll || filtered.length > INITIAL_VISIBLE;
 
   function toggleBookmark(id: string) {
     setBookmarks((prev) => {
@@ -111,23 +108,25 @@ function StudentCourses({
             <ChevronDownIcon className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
           </div>
 
-          {canToggle && (
-            <button
-              type="button"
-              onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex h-10 items-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 px-4 text-sm font-semibold text-violet-600 transition-colors hover:bg-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500"
-            >
-              {showAll ? "Show Less" : "View All"}
-              <ArrowRightIcon />
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={onViewAll}
+            className="inline-flex h-10 items-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 px-4 text-sm font-semibold text-violet-600 transition-colors hover:bg-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500"
+          >
+            View All
+            <ArrowRightIcon />
+          </button>
         </div>
       </div>
 
-      {/* Courses */}
-      <div id={PANEL_ID} role="tabpanel">
+      {/* 2 columns + inner scroll on smaller screens, one row of 4 on 1400px+ */}
+      <div
+        id={PANEL_ID}
+        role="tabpanel"
+        className="max-h-[620px] overflow-y-auto p-1 pr-2 min-[1400px]:max-h-none min-[1400px]:overflow-visible"
+      >
         {visible.length > 0 ? (
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 min-[1400px]:grid-cols-4 min-[1400px]:[&>*:nth-child(n+5)]:hidden">
             {visible.map((course) => (
               <CourseCard
                 key={course.id}

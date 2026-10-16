@@ -119,14 +119,14 @@ function StudentCourses({
         </div>
       </div>
 
-      {/* Courses: scrolls inside the component */}
+      {/* 2 columns + inner scroll on smaller screens, one row of 4 on 1400px+ */}
       <div
         id={PANEL_ID}
         role="tabpanel"
-        className="max-h-[620px] overflow-y-auto p-1 pr-2"
+        className="max-h-[620px] overflow-y-auto p-1 pr-2 min-[1400px]:max-h-none min-[1400px]:overflow-visible"
       >
         {visible.length > 0 ? (
-          <div className="grid grid-cols-2 gap-4 min-[1400px]:grid-cols-4">
+          <div className="grid grid-cols-2 gap-4 min-[1400px]:grid-cols-4 min-[1400px]:[&>*:nth-child(n+5)]:hidden">
             {visible.map((course) => (
               <CourseCard
                 key={course.id}

@@ -1,11 +1,34 @@
 import { ScheduleIcon } from "./icons";
 import type { DotColor, ScheduleEvent, TileColor } from "./types";
 
-const dotThemes: Record<DotColor, { dot: string; ring: string; line: string }> = {
-  violet: { dot: "bg-violet-500", ring: "ring-violet-100", line: "from-violet-400" },
-  blue: { dot: "bg-blue-400", ring: "ring-blue-100", line: "from-blue-300" },
-  emerald: { dot: "bg-emerald-400", ring: "ring-emerald-100", line: "from-emerald-300" },
-  amber: { dot: "bg-amber-400", ring: "ring-amber-100", line: "from-amber-400" },
+const dotThemes: Record<
+  DotColor,
+  { dot: string; ring: string; from: string; to: string }
+> = {
+  violet: {
+    dot: "bg-violet-500",
+    ring: "ring-violet-100",
+    from: "from-violet-300",
+    to: "to-violet-300",
+  },
+  blue: {
+    dot: "bg-blue-400",
+    ring: "ring-blue-100",
+    from: "from-blue-300",
+    to: "to-blue-300",
+  },
+  emerald: {
+    dot: "bg-emerald-400",
+    ring: "ring-emerald-100",
+    from: "from-emerald-300",
+    to: "to-emerald-300",
+  },
+  amber: {
+    dot: "bg-amber-400",
+    ring: "ring-amber-100",
+    from: "from-amber-300",
+    to: "to-amber-300",
+  },
 };
 
 const tileThemes: Record<TileColor, string> = {
@@ -17,55 +40,76 @@ const tileThemes: Record<TileColor, string> = {
 
 type ScheduleItemProps = {
   event: ScheduleEvent;
+  /** Dot color of the next event. Omit for the last item (no line is drawn). */
+  nextDotColor?: DotColor;
   onAction?: (event: ScheduleEvent) => void;
 };
 
-export default function ScheduleItem({ event, onAction }: ScheduleItemProps) {
+export default function ScheduleItem({
+  event,
+  nextDotColor,
+  onAction,
+}: ScheduleItemProps) {
   const dot = dotThemes[event.dotColor];
+  const next = nextDotColor ? dotThemes[nextDotColor] : null;
   const isLive = event.status === "live";
 
   return (
-    <li className="relative flex items-center gap-3 py-3 sm:gap-4">
-      {/* Timeline dot + short line */}
-      <div className="relative h-full w-3 shrink-0 self-stretch">
+    <li className="relative pl-7">
+      {/* Line: runs from this dot's center to the next dot's center */}
+      {next && (
         <span
-          className={`absolute left-0 top-1/2 h-3 w-3 -translate-y-1/2 rounded-full ring-4 ${dot.dot} ${dot.ring}`}
+          aria-hidden
+          className={`absolute left-[5px] top-[22px] -bottom-[22px] w-0.5 bg-gradient-to-b @[30rem]:top-[25px] @[30rem]:-bottom-[25px] ${dot.from} ${next.to}`}
         />
-        <span
-          className={`absolute left-[5px] top-1/2 mt-3 h-4 w-0.5 rounded-full bg-gradient-to-b to-transparent ${dot.line}`}
-        />
-      </div>
+      )}
 
-      <p className="w-[4.5rem] shrink-0 text-sm font-medium text-slate-700 sm:w-24">
-        {event.time}
-      </p>
-
+      {/* Dot (sits above the line, aligned with the time text) */}
       <span
-        className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${tileThemes[event.tileColor]}`}
-      >
-        <ScheduleIcon name={event.icon} />
-      </span>
+        aria-hidden
+        className={`absolute left-0 top-4 z-10 h-3 w-3 rounded-full ring-4 @[30rem]:top-[19px] ${dot.dot} ${dot.ring}`}
+      />
 
-      <div className="min-w-0 flex-1">
-        <h3 className="truncate text-[15px] font-semibold text-slate-900">{event.title}</h3>
-        <p className="mt-0.5 flex items-center gap-1.5 text-xs text-slate-400">
-          <span>{event.type}</span>
-          <span className="h-1 w-1 rounded-full bg-slate-300" />
-          <span>{event.duration}</span>
-        </p>
+      <div className="flex items-center gap-2 py-3 @[30rem]:gap-4">
+        {/* Time + course name below it (all sizes) */}
+        <div className="min-w-0 flex-1 @[30rem]:w-40 @[30rem]:flex-none @[30rem]:shrink-0">
+          <p className="whitespace-nowrap text-sm font-medium text-slate-700">
+            {event.time}
+          </p>
+          <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-slate-500">
+            {event.title}
+          </p>
+        </div>
+
+        {/* Icon tile (wide card only) */}
+        <span
+          className={`hidden h-11 w-11 shrink-0 place-items-center rounded-xl @[30rem]:grid ${tileThemes[event.tileColor]}`}
+        >
+          <ScheduleIcon name={event.icon} />
+        </span>
+
+        {/* Type + duration (wide card only) */}
+        <div className="hidden min-w-0 flex-1 @[30rem]:block">
+          <p className="flex items-center gap-1.5 text-sm text-slate-500">
+            <span className="truncate">{event.type}</span>
+            <span className="h-1 w-1 shrink-0 rounded-full bg-slate-300" />
+            <span className="whitespace-nowrap">{event.duration}</span>
+          </p>
+        </div>
+
+        {/* Action button: small on narrow cards, full size on wide cards */}
+        <button
+          type="button"
+          onClick={() => onAction?.(event)}
+          className={`h-8 w-16 shrink-0 rounded-lg text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 @[30rem]:h-10 @[30rem]:w-28 @[30rem]:text-sm ${
+            isLive
+              ? "bg-violet-600 text-white shadow-sm hover:bg-violet-700"
+              : "bg-violet-50 text-violet-600 hover:bg-violet-100"
+          }`}
+        >
+          {isLive ? "Join" : "Start"}
+        </button>
       </div>
-
-      <button
-        type="button"
-        onClick={() => onAction?.(event)}
-        className={`h-10 w-20 shrink-0 rounded-lg text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 sm:w-28 ${
-          isLive
-            ? "bg-violet-600 text-white shadow-sm hover:bg-violet-700"
-            : "bg-violet-50 text-violet-600 hover:bg-violet-100"
-        }`}
-      >
-        {isLive ? "Join" : "Start"}
-      </button>
     </li>
   );
 }

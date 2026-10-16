@@ -5,7 +5,7 @@ import StudentCourses from "../components/StudentCourses";
 
 function MainBody() {
   return (
-    <div className="flex w-full bg-blue-500 h-svh">
+    <div className="flex w-full h-svh bg-[#f6f9fd]">
       <div className="lg:w-[75%] 2xl:w-[80%] bg-black">
         <HeaderImage />
         <StudentCourses />
@@ -13,8 +13,6 @@ function MainBody() {
       <div className="lg:w-[25%] 2xl:w-[20%]">
         <Calendar />
       </div>
-      <div className="lg:w-[25%] 2xl:w-[20%] bg-yellow-400"></div>
-      <div></div>
     </div>
   );
 }

@@ -12,7 +12,7 @@ export default function LearningJourney() {
 
         <button
           type="button"
-          className="flex items-center gap-1 text-xs font-semibold text-indigo-500 transition hover:text-indigo-700"
+          className="flex cursor-pointer items-center gap-1 text-xs font-semibold text-indigo-500 transition hover:text-indigo-700"
         >
           View Details
           <ArrowUpRight size={14} />

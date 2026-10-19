@@ -52,7 +52,7 @@ export default function CourseCard({
           onClick={() => onToggleBookmark(course.id)}
           aria-pressed={bookmarked}
           aria-label={bookmarked ? "Remove bookmark" : "Bookmark course"}
-          className={`absolute right-2.5 top-2.5 grid h-7 w-7 place-items-center rounded-lg bg-white/90 shadow-sm transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 ${
+          className={`absolute cursor-pointer right-2.5 top-2.5 grid h-7 w-7 place-items-center rounded-lg bg-white/90 shadow-sm transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 ${
             bookmarked ? "text-blue-600" : "text-slate-600"
           }`}
         >
@@ -96,7 +96,7 @@ export default function CourseCard({
           <button
             type="button"
             onClick={() => onOpen?.(course)}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-blue-50 px-3.5 py-1.5 text-xs font-semibold text-blue-600 transition-colors hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500"
+            className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-blue-50 px-3.5 py-1.5 text-xs font-semibold text-blue-600 transition-colors hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500"
           >
             {actionLabels[course.status]}
             <ArrowRightIcon />

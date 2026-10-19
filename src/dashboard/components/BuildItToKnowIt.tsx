@@ -7,10 +7,10 @@ type BuildItToKnowItProps = {
 
 export default function BuildItToKnowIt({ onOpenLab }: BuildItToKnowItProps) {
   return (
-    <section className="flex h-full min-h-[280px] w-full flex-col rounded-2xl bg-gradient-to-br from-sky-50 via-white to-indigo-50 p-2 sm:p-3">
+    <section className="flex h-full min-h-[280px] w-full min-w-0 flex-col rounded-2xl border border-slate-100 bg-white p-2 shadow-sm sm:p-3">
       {/* Header */}
       <header className="mb-4 flex items-center gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-cyan-500 text-white shadow-sm">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#2563eb] text-white shadow-sm">
           <ArrowRight size={21} />
         </div>
 
@@ -41,7 +41,7 @@ export default function BuildItToKnowIt({ onOpenLab }: BuildItToKnowItProps) {
           <button
             type="button"
             onClick={onOpenLab}
-            className="mt-5 inline-flex min-h-10 items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-blue-950 shadow-sm transition-colors hover:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="mt-5 inline-flex min-h-10 cursor-pointer items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-[#2563eb] shadow-sm transition-colors duration-200 hover:bg-blue-50 active:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2563eb]"
           >
             Open a lab
             <ArrowRight size={17} />

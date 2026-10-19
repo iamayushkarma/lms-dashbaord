@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BookOpen, ChevronDown, MoreVertical, Play } from "lucide-react";
+import { BookOpen, ChevronDown, MoreVertical, Play, Eye } from "lucide-react";
 import { quizAttempts, type QuizAttempt } from "../studentReportData";
 import ScoreRing from "./ScoreRing";
 
@@ -126,10 +126,19 @@ function QuizAttempts() {
                     onClick={() => {
                       // Connect this to the quiz result or quiz launch route.
                     }}
-                    className="inline-flex items-center gap-1.5 rounded-lg bg-violet-50 px-3 py-1.5 text-xs font-medium text-violet-700 transition hover:bg-violet-100 cursor-pointer"
+                    className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-violet-50 px-3 py-1.5 text-xs font-medium text-violet-700 transition hover:bg-violet-100"
                   >
-                    <Play size={12} />
-                    {quiz.status === "Submitted" ? "View" : "Start"}
+                    {quiz.status === "Submitted" ? (
+                      <>
+                        <Eye size={13} />
+                        View
+                      </>
+                    ) : (
+                      <>
+                        <Play size={12} />
+                        Start
+                      </>
+                    )}
                   </button>
                 </td>
 

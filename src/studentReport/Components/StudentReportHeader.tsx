@@ -10,7 +10,7 @@ import {
 
 function StudentReportHeader() {
   return (
-    <div className="mt-2 w-full rounded-xl border border-slate-200/60 bg-white p-3 shadow-[0_2px_6px_rgba(15,23,42,0.025),0_6px_18px_rgba(15,23,42,0.02)] sm:p-4">
+    <div className="mt-2 w-full rounded-xl border border-slate-200/60 bg-white p-3 shadow-[0_1px_3px_rgba(15,23,42,0.025),0_4px_12px_rgba(15,23,42,0.025)] sm:p-4">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         {/* Student details */}
         <div className="flex min-w-0 items-center gap-3">

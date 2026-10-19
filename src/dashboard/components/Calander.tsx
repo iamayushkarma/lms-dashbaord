@@ -43,7 +43,7 @@ export default function Calendar({ value, onChange }: CalendarProps) {
             type="button"
             aria-label="Previous month"
             onClick={() => changeMonth(-1)}
-            className={`grid h-6 w-6 place-items-center rounded-md hover:bg-slate-100 ${focusRing}`}
+            className={`grid h-6 w-6 cursor-pointer place-items-center rounded-md hover:bg-slate-100 ${focusRing}`}
           >
             <Chevron direction="left" />
           </button>
@@ -60,7 +60,7 @@ export default function Calendar({ value, onChange }: CalendarProps) {
             type="button"
             aria-label="Next month"
             onClick={() => changeMonth(1)}
-            className={`grid h-6 w-6 place-items-center rounded-md hover:bg-slate-100 ${focusRing}`}
+            className={`grid h-6 w-6 cursor-pointer place-items-center rounded-md hover:bg-slate-100 ${focusRing}`}
           >
             <Chevron direction="right" />
           </button>

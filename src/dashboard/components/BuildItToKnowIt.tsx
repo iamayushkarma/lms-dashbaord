@@ -7,7 +7,7 @@ type BuildItToKnowItProps = {
 
 export default function BuildItToKnowIt({ onOpenLab }: BuildItToKnowItProps) {
   return (
-    <section className="flex h-full min-h-[280px] w-full flex-col rounded-2xl bg-gradient-to-br from-sky-50 via-white to-indigo-50 p-4 sm:p-5">
+    <section className="flex h-full min-h-[280px] w-full flex-col rounded-2xl bg-gradient-to-br from-sky-50 via-white to-indigo-50 p-2 sm:p-3">
       {/* Header */}
       <header className="mb-4 flex items-center gap-3">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-700 to-cyan-500 text-white shadow-sm">

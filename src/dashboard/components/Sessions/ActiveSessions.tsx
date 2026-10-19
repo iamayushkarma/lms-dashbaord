@@ -219,7 +219,7 @@ export default function ActiveSessions() {
   ).length;
 
   return (
-    <section className="w-full rounded-2xl bg-slate-50 p-4 sm:p-5">
+    <section className="w-full rounded-2xl bg-slate-50 p-2 sm:px-3">
       <header className="mb-4 flex items-center justify-between gap-3">
         <div className="min-w-0">
           <h2 className="text-lg font-bold tracking-tight text-slate-900">

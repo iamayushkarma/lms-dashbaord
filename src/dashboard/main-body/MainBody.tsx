@@ -50,8 +50,6 @@ function MainBody() {
       <div className="flex w-full min-w-0 shrink-0 flex-col gap-4 lg:w-[25%] 2xl:w-[20%]">
         <Calendar />
         <TodaysSchedule />
-        {/* <LearningJourney />
-        <CreateAmazingLearningExperiences /> */}
         <div className="grid grid-cols-2 gap-3 min-[1000px]:grid-cols-1">
           <LearningJourney />
           <CreateAmazingLearningExperiences />

@@ -2,7 +2,8 @@ import { useMemo, useState } from "react";
 import CourseCard from "./CourseCard";
 import CourseTabs from "./CourseTabs";
 import { demoCourses } from "./data";
-import { ArrowRightIcon, ChevronDownIcon } from "./icons";
+import { ChevronDownIcon } from "./icons";
+import { ArrowRight } from "lucide-react";
 import type { Course, SortKey, TabItem, TabKey } from "./types";
 
 const PANEL_ID = "student-courses-panel";
@@ -81,11 +82,11 @@ function StudentCourses({
   }
 
   return (
-    <section className="w-full rounded-2xl bg-[#f6f7fb] p-4 sm:p-6">
+    <section className="w-full rounded-2xl bg-[#f6f7fb] px-3 sm:px-4 sm:py-2">
       {/* Header */}
-      <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mb-3 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex min-w-0 flex-col gap-3 md:flex-row md:items-center md:gap-8">
-          <h2 className="text-lg xl:text-xl w-full-[100px] font-bold text-slate-900">
+          <h2 className="text-lg xl:text-xl w-32 font-bold text-slate-900">
             My Courses
           </h2>
           <CourseTabs
@@ -119,10 +120,12 @@ function StudentCourses({
               setShowAllCourses((previous) => !previous);
               onViewAll?.();
             }}
-            className="inline-flex h-10 cursor-pointer items-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 px-4 text-sm font-semibold text-violet-600 transition-colors hover:bg-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500"
+            className="
+             h-10 cursor-pointer rounded-lg border border-violet-200 bg-violet-50 px-4 text-sm transition-colors hover:bg-violet-100 focus-visible:outline-violet-500
+            flex shrink-0 items-center gap-1 whitespace-nowrap text-[11px] font-bold text-[#5b3ff8] hover:text-[#4a2fe0]"
           >
             {showAllCourses ? "Show Less" : "View All"}
-            <ArrowRightIcon />
+            <ArrowRight className="h-3 w-3" />
           </button>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import createAmazingLearningExperiencesImageLG from "../../assets/Create-Amazing-Learning-Experiences.png";
-import createAmazingLearningExperiencesImageMD from "../../assets/Create-Amazing-Learning-Experiences-md-5.png";
+import createAmazingLearningExperiencesImageMD from "../../assets/Create-Amazing-Learning-Experiences-md.png";
 
 function CreateAmazingLearningExperiences() {
   return (

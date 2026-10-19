@@ -134,7 +134,7 @@ function StudentCourses({
       <div
         id={PANEL_ID}
         role="tabpanel"
-        className="max-h-[460px] overflow-y-auto p-1 pr-2 min-[1400px]:max-h-none min-[1400px]:overflow-visible"
+        className="courses-scrollbar max-h-[460px] overflow-y-auto p-1 pr-2 min-[1400px]:max-h-none min-[1400px]:overflow-visible"
       >
         {visible.length > 0 ? (
           <div

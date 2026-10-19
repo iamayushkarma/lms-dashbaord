@@ -55,7 +55,7 @@ function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
   };
 
   const iconBtn =
-    "relative flex h-10 w-10 items-center justify-center rounded-xl text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500";
+    "relative flex h-10 w-10 items-center justify-center rounded-xl text-slate-500 transition hover:bg-slate-100 hover:text-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 cursor-pointer";
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
@@ -92,7 +92,7 @@ function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
             onClick={() => setMobileSearchOpen((v) => !v)}
             aria-label="Toggle search"
             aria-expanded={mobileSearchOpen}
-            className={`${iconBtn} md:hidden`}
+            className={`${iconBtn} md:hidden cursor-pointer`}
           >
             <Search className="h-5 w-5" />
           </button>
@@ -104,7 +104,7 @@ function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
               onClick={() => setCreateOpen((v) => !v)}
               aria-haspopup="menu"
               aria-expanded={createOpen}
-              className="flex h-10 items-center gap-1.5 rounded-xl bg-indigo-600 px-3 text-sm font-semibold text-white shadow-sm shadow-indigo-200 transition hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 sm:px-4"
+              className="flex h-10 items-center gap-1.5 rounded-xl bg-indigo-600 px-3 text-sm font-semibold text-white shadow-sm shadow-indigo-200 transition hover:bg-indigo-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 sm:px-4 cursor-pointer"
             >
               <Plus className="h-4 w-4" />
               <span className="hidden sm:inline">Create</span>
@@ -126,7 +126,7 @@ function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
                     role="menuitem"
                     type="button"
                     onClick={() => setCreateOpen(false)}
-                    className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-700"
+                    className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 cursor-pointer"
                   >
                     <Icon className="h-4 w-4" />
                     {label}
@@ -149,7 +149,7 @@ function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
             type="button"
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className={`${iconBtn} hidden sm:flex`}
+            className={`${iconBtn} hidden sm:flex cursor-pointer`}
           >
             {dark ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
           </button>
@@ -157,7 +157,7 @@ function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
           {/* Profile */}
           <button
             type="button"
-            className="flex items-center gap-2.5 rounded-xl p-1 pr-1 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 sm:pr-2"
+            className="flex cursor-pointer items-center gap-2.5 rounded-xl p-1 pr-1 hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 sm:pr-2"
           >
             <img
               src="https://i.pravatar.cc/80?img=12"

@@ -8,6 +8,8 @@ import TopPerformingStudents from "../components/student-stats/TopPerformingStud
 import TodaysSchedule from "../components/todays-schedule/TodaysSchedule";
 import LearningJourney from "../components/LearningJourney";
 import CreateAmazingLearningExperiences from "../components/CreateAmazingLearningExperiences";
+import RecentAssignments from "../components/RecentAssignments";
+import YourBadges from "../components/YourBadges";
 
 function MainBody() {
   return (
@@ -35,6 +37,8 @@ function MainBody() {
             <TopPerformingStudents />
           </div>
         </div>
+
+        <RecentAssignments />
       </div>
 
       {/* Right dashboard column */}
@@ -43,6 +47,7 @@ function MainBody() {
         <TodaysSchedule />
         <LearningJourney />
         <CreateAmazingLearningExperiences />
+        <YourBadges />
       </div>
     </div>
   );

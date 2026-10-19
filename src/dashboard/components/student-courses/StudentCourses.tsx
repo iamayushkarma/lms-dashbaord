@@ -111,7 +111,7 @@ function StudentCourses({
           <button
             type="button"
             onClick={onViewAll}
-            className="inline-flex h-10 items-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 px-4 text-sm font-semibold text-violet-600 transition-colors hover:bg-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500"
+            className="inline-flex  cursor-pointer h-10 items-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 px-4 text-sm font-semibold text-violet-600 transition-colors hover:bg-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500"
           >
             View All
             <ArrowRightIcon />

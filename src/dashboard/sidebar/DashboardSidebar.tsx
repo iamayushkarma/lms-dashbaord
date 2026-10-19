@@ -65,7 +65,7 @@ export default function DashboardSidebar({
             aria-label={label}
             disabled={!isVisible}
             onClick={() => onNavigate?.(label)}
-            className="group relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-slate-500 transition-colors hover:bg-indigo-50 hover:text-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:pointer-events-none"
+            className="group relative cursor-pointer flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-slate-500 transition-colors hover:bg-indigo-50 hover:text-indigo-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 disabled:pointer-events-none"
           >
             <Icon className="h-5 w-5" />
 

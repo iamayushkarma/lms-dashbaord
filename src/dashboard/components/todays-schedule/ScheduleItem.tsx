@@ -101,7 +101,7 @@ export default function ScheduleItem({
         <button
           type="button"
           onClick={() => onAction?.(event)}
-          className={`h-8 w-16 shrink-0 rounded-lg text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 @[30rem]:h-10 @[30rem]:w-28 @[30rem]:text-sm ${
+          className={`h-8 w-16 cursor-pointer shrink-0 rounded-lg text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 @[30rem]:h-10 @[30rem]:w-28 @[30rem]:text-sm ${
             isLive
               ? "bg-violet-600 text-white shadow-sm hover:bg-violet-700"
               : "bg-violet-50 text-violet-600 hover:bg-violet-100"

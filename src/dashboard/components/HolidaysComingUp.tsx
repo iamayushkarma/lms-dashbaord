@@ -28,7 +28,7 @@ export default function HolidaysComingUp({
       {/* Header */}
       <header className="mb-4 flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-3">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#2563eb] text-white shadow-sm">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-rose-600 text-white shadow-sm">
             <PartyPopper size={20} />
           </span>
 
@@ -43,16 +43,16 @@ export default function HolidaysComingUp({
       </header>
 
       {/* Holiday card */}
-      <article className="relative flex min-h-[210px] flex-1 flex-col justify-between overflow-hidden rounded-[22px] bg-gradient-to-br from-[#2563eb] via-[#1d4ed8] to-[#172554] p-5 sm:p-6">
+      <article className="relative flex min-h-[210px] flex-1 flex-col justify-between overflow-hidden rounded-[22px] bg-gradient-to-br from-amber-500 via-orange-600 to-rose-950 p-5 sm:p-6">
         <PartyPopper
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-6 -right-6 h-36 w-36 rotate-[-18deg] text-white/[0.14]"
+          className="pointer-events-none absolute -bottom-6 -right-6 h-36 w-36 rotate-[-18deg] text-white/[0.16]"
           strokeWidth={2.5}
         />
 
         {/* Holiday status */}
         <div className="relative z-10">
-          <span className="inline-flex rounded-full bg-white/95 px-4 py-2 text-xs font-extrabold text-[#2563eb] shadow-sm sm:text-sm">
+          <span className="inline-flex rounded-full bg-orange-50 px-4 py-2 text-xs font-extrabold text-rose-700 shadow-sm sm:text-sm">
             {holiday.status === "today" ? "TODAY" : "UPCOMING"}
           </span>
         </div>
@@ -63,7 +63,7 @@ export default function HolidaysComingUp({
             {holiday.name}
           </h3>
 
-          <p className="mt-1 text-sm font-semibold text-blue-100 sm:text-base">
+          <p className="mt-1 text-sm font-semibold text-white/90 sm:text-base">
             {holiday.date}
           </p>
         </div>

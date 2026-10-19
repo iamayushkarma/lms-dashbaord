@@ -26,7 +26,7 @@ function MainBody() {
         <StudentCourses />
 
         {/* Charts: responsive equal-width cards */}
-        <div className="grid w-full min-w-0 grid-cols-1 items-stretch gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid w-full min-w-0 grid-cols-1 items-stretch gap-4 md:grid-cols-2 xl:grid-cols-3 p-2 sm:px-3">
           <div className="min-w-0">
             <StudentProgress />
           </div>

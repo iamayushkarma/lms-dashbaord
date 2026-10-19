@@ -120,7 +120,7 @@ export default function RecentAssignments({
   }
 
   return (
-    <section className="w-full min-w-0 overflow-hidden rounded-2xl border border-slate-100 bg-white p-3 shadow-sm sm:p-5">
+    <section className="w-[98%] mx-auto min-w-0 overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm sm:p-5 p-2 sm:px-3">
       {/* Header */}
       <div className="mb-4 flex items-center justify-between gap-3">
         <h2 className="text-base font-bold text-slate-900 sm:text-lg">

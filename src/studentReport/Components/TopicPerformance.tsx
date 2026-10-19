@@ -5,7 +5,7 @@ function TopicPerformance() {
   return (
     <section className="rounded-xl border border-slate-200/80 bg-white p-4">
       <div className="mb-4 flex items-center gap-2.5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-50 text-violet-600">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-[#2563eb]">
           <LayoutGrid size={17} />
         </div>
 
@@ -40,7 +40,7 @@ function TopicPerformance() {
               aria-valuemax={100}
             >
               <div
-                className="h-full rounded-full bg-gradient-to-r from-violet-300 to-violet-600 transition-all duration-300"
+                className="h-full rounded-full bg-gradient-to-r from-blue-300 to-[#2563eb] transition-all duration-300"
                 style={{ width: `${topic.accuracy}%` }}
               />
             </div>

@@ -27,8 +27,8 @@ function StudentReportTabs({ activeTab, onTabChange }: StudentReportTabsProps) {
             onClick={() => onTabChange(label)}
             className={`cursor-pointer inline-flex shrink-0 items-center gap-2 border-b-2 px-4 py-3 text-xs font-medium transition-colors ${
               active
-                ? "border-violet-600 text-violet-700"
-                : "border-transparent text-slate-600 hover:text-violet-700"
+                ? "border-[#2563eb] text-[#2563eb]"
+                : "border-transparent hover:text-[#2563eb]"
             }`}
           >
             <Icon size={15} strokeWidth={1.8} />

@@ -126,7 +126,7 @@ function QuizAttempts() {
                     onClick={() => {
                       // Connect this to the quiz result or quiz launch route.
                     }}
-                    className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-violet-50 px-3 py-1.5 text-xs font-medium text-violet-700 transition hover:bg-violet-100"
+                    className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg bg-violet-50 px-3 py-1.5 text-xs font-medium text-[#2563eb]  transition hover:bg-violet-100"
                   >
                     {quiz.status === "Submitted" ? (
                       <>

@@ -46,7 +46,7 @@ function StudentReportHeader() {
         </div>
 
         {/* Contact and actions */}
-        <div className="flex flex-col gap-3 border-t border-slate-100 pt-3 sm:flex-row sm:items-center sm:justify-between lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0">
+        <div className="flex flex-col gap-3 border-t border-slate-200 pt-3 sm:flex-row sm:items-center sm:justify-between lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0">
           <div className="min-w-0 space-y-1.5">
             <p className="text-[10px] font-semibold uppercase tracking-wide text-slate-500">
               Contact
@@ -66,7 +66,7 @@ function StudentReportHeader() {
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
-              className="cursor-pointer inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-violet-50 px-3 py-2 text-xs font-medium text-violet-700 transition hover:bg-violet-100 sm:flex-none"
+              className="cursor-pointer inline-flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-violet-50 px-3 py-2 text-xs font-medium text-[#2563eb]  transition hover:bg-violet-100 sm:flex-none"
             >
               <Send size={13} />
               Send reminder
@@ -74,7 +74,7 @@ function StudentReportHeader() {
 
             <button
               type="button"
-              className="cursor-pointer flex-1 rounded-lg bg-violet-600 px-3 py-2 text-xs font-medium text-white transition hover:bg-violet-700 sm:flex-none"
+              className="cursor-pointer flex-1 rounded-lg bg-[#2563eb] hover:bg-[#1D4ED8]  px-3 py-2 text-xs font-medium text-white transition sm:flex-none"
             >
               View as parent
             </button>

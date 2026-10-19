@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+/* Hide sidebar scrollbar without disabling scrolling */
+.sidebar-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prevent media and content from overflowing their containers */
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}

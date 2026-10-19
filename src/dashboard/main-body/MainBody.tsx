@@ -7,30 +7,42 @@ import PerformanceOverview from "../components/student-stats/PerformanceOverview
 import TopPerformingStudents from "../components/student-stats/TopPerformingStudents";
 import TodaysSchedule from "../components/todays-schedule/TodaysSchedule";
 import LearningJourney from "../components/LearningJourney";
+import CreateAmazingLearningExperiences from "../components/CreateAmazingLearningExperiences";
 
 function MainBody() {
   return (
-    <div className="flex min-h-svh w-full flex-col gap-4 bg-[#f6f9fd] lg:flex-row">
+    <div className="flex min-h-svh w-full min-w-0 flex-col gap-4 bg-[#f6f9fd] lg:flex-row">
+      {/* Main dashboard content */}
       <div className="flex min-w-0 flex-1 flex-col gap-4">
         <div className="shrink-0 overflow-hidden rounded-md">
           <HeaderImage />
         </div>
+
         <StatsCards />
         <StudentCourses />
 
-        {/* Charts row: stacked on mobile, 2 cols on md, 3 cols from xl */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-[1.4fr_1.2fr_1fr]">
-          <div className="md:col-span-2 xl:col-span-1">
+        {/* Charts: stacked on mobile, two columns on medium screens */}
+        <div className="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-[1.4fr_1.2fr_1fr]">
+          <div className="min-w-0 md:col-span-2 xl:col-span-1">
             <StudentProgress />
           </div>
-          <PerformanceOverview />
-          <TopPerformingStudents />
+
+          <div className="min-w-0">
+            <PerformanceOverview />
+          </div>
+
+          <div className="min-w-0">
+            <TopPerformingStudents />
+          </div>
         </div>
       </div>
-      <div className="flex w-full shrink-0 flex-col gap-4 lg:w-[25%] 2xl:w-[20%]">
+
+      {/* Right dashboard column */}
+      <div className="flex w-full min-w-0 shrink-0 flex-col gap-4 lg:w-[25%] 2xl:w-[20%]">
         <Calendar />
         <TodaysSchedule />
         <LearningJourney />
+        <CreateAmazingLearningExperiences />
       </div>
     </div>
   );

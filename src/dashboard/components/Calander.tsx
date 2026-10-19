@@ -34,7 +34,7 @@ export default function Calendar({ value, onChange }: CalendarProps) {
   }
 
   return (
-    <div className="w-full max-w-[340px] rounded-2xl bg-white px-4 pb-4 pt-5 text-slate-800 shadow-sm">
+    <div className="w-full rounded-2xl bg-white px-4 pb-4 pt-5 text-slate-800 shadow-sm">
       <div className="mb-5 flex items-center justify-between">
         <h2 className="text-base font-semibold">{title}</h2>
 

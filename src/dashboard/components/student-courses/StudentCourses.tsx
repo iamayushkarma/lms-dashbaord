@@ -123,7 +123,7 @@ function StudentCourses({
       <div
         id={PANEL_ID}
         role="tabpanel"
-        className="max-h-[620px] overflow-y-auto p-1 pr-2 min-[1400px]:max-h-none min-[1400px]:overflow-visible"
+        className="max-h-[450px] overflow-y-auto p-1 pr-2 min-[1400px]:max-h-none min-[1400px]:overflow-visible"
       >
         {visible.length > 0 ? (
           <div className="grid grid-cols-2 gap-4 min-[1400px]:grid-cols-4 min-[1400px]:[&>*:nth-child(n+5)]:hidden">

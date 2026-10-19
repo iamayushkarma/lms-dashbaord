@@ -1,24 +1,27 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DashboardSidebar from "./sidebar/DashboardSidebar";
 import DashboardHeader from "./header/DashboardHeader";
 import MainBody from "./main-body/MainBody";
 
 function Dashboard() {
-  // Controls the sidebar drawer on screens smaller than `lg`
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarVisible((prev) => !prev);
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800">
-      <DashboardSidebar
-        isOpen={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
-      />
+      <DashboardSidebar isVisible={sidebarVisible} />
 
-      {/* Offset content by sidebar width on desktop */}
-      <div className="flex min-h-screen flex-col lg:pl-64">
-        <DashboardHeader onMenuClick={() => setSidebarOpen(true)} />
+      <div
+        className={`flex min-h-screen flex-col transition-[margin] duration-300 ${
+          sidebarVisible ? "ml-16" : "ml-0"
+        }`}
+      >
+        <DashboardHeader onMenuClick={toggleSidebar} />
 
-        <main className="flex-1 p-4 sm:p-6">
+        <main className="min-w-0 flex-1 p-4 sm:p-6">
           <MainBody />
         </main>
       </div>

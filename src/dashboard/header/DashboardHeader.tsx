@@ -36,7 +36,8 @@ function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
     const onClick = (e: MouseEvent) => {
       if (!createRef.current?.contains(e.target as Node)) setCreateOpen(false);
     };
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setCreateOpen(false);
+    const onKey = (e: KeyboardEvent) =>
+      e.key === "Escape" && setCreateOpen(false);
     document.addEventListener("mousedown", onClick);
     document.addEventListener("keydown", onKey);
     return () => {
@@ -63,8 +64,9 @@ function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
         <button
           type="button"
           onClick={onMenuClick}
-          aria-label="Open sidebar"
-          className={`${iconBtn} lg:hidden`}
+          aria-label="Toggle sidebar"
+          aria-controls="dashboard-sidebar"
+          className={iconBtn}
         >
           <Menu className="h-5 w-5" />
         </button>

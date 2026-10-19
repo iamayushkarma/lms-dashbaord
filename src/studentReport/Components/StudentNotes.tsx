@@ -41,9 +41,12 @@ function StudentNotes() {
         onChange={(event) => setNote(event.target.value)}
         placeholder="Add a note about this student..."
         rows={2}
-        className="w-full resize-y rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-xs text-slate-700 outline-none placeholder:text-slate-400 focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
+        maxLength={500}
+        className="max-h-32 w-full resize-y rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-xs text-slate-700 outline-none placeholder:text-slate-400 focus:border-violet-400 focus:ring-2 focus:ring-violet-100"
       />
-
+      <p className="mt-1 text-right text-[11px] text-slate-400">
+        {note.length}/500 characters
+      </p>
       {savedNote && (
         <div className="mt-3 rounded-lg bg-slate-50 p-3">
           <p className="whitespace-pre-wrap text-xs leading-5 text-slate-700">

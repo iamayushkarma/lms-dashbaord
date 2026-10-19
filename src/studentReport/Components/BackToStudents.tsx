@@ -5,7 +5,7 @@ function BackToStudents() {
     <button
       type="button"
       onClick={() => window.history.back()}
-      className="cursor-pointer inline-flex items-center gap-2 text-xs font-medium text-[#2563eb] transition-colors hover:text-violet-900"
+      className="cursor-pointer inline-flex items-center gap-2 text-xs font-medium text-[#2563eb] transition-colors hover:text-[#1D4ED8]"
     >
       <ArrowLeft size={15} strokeWidth={2} />
       <span>Back to Students</span>

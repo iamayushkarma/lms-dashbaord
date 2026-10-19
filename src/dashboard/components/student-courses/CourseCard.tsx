@@ -52,8 +52,8 @@ export default function CourseCard({
           onClick={() => onToggleBookmark(course.id)}
           aria-pressed={bookmarked}
           aria-label={bookmarked ? "Remove bookmark" : "Bookmark course"}
-          className={`absolute right-2.5 top-2.5 grid h-7 w-7 place-items-center rounded-lg bg-white/90 shadow-sm transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500 ${
-            bookmarked ? "text-violet-600" : "text-slate-600"
+          className={`absolute right-2.5 top-2.5 grid h-7 w-7 place-items-center rounded-lg bg-white/90 shadow-sm transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 ${
+            bookmarked ? "text-blue-600" : "text-slate-600"
           }`}
         >
           <BookmarkIcon filled={bookmarked} />
@@ -70,26 +70,33 @@ export default function CourseCard({
         <h3 className="truncate text-[15px] font-semibold text-slate-900">
           {course.title}
         </h3>
+
         <p className="mt-1 flex items-center gap-1.5 text-xs text-slate-500">
           <span>{course.students} Students</span>
           <span className="h-1 w-1 rounded-full bg-slate-300" />
           <span>{course.lessons} Lessons</span>
         </p>
 
+        {/* Progress */}
         <div className="mt-4">
           <ProgressBar
             value={course.progress}
-            barClassName={isCompleted ? "bg-emerald-500" : "bg-violet-500"}
+            barClassName={
+              isCompleted
+                ? "bg-emerald-500"
+                : "bg-gradient-to-r from-[#2563eb] to-[#60a5fa]"
+            }
           />
         </div>
 
+        {/* Footer */}
         <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
           <AvatarStack avatars={course.avatars} more={course.moreStudents} />
 
           <button
             type="button"
             onClick={() => onOpen?.(course)}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-violet-50 px-3.5 py-1.5 text-xs font-semibold text-violet-600 transition-colors hover:bg-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-blue-50 px-3.5 py-1.5 text-xs font-semibold text-blue-600 transition-colors hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500"
           >
             {actionLabels[course.status]}
             <ArrowRightIcon />

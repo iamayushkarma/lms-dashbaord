@@ -21,11 +21,15 @@ export default function CourseTabs({
     event: KeyboardEvent<HTMLButtonElement>,
     index: number,
   ) {
-    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {
+      return;
+    }
+
     event.preventDefault();
 
     const step = event.key === "ArrowRight" ? 1 : -1;
     const next = tabs[(index + step + tabs.length) % tabs.length];
+
     onChange(next.key);
     refs.current[next.key]?.focus();
   }
@@ -52,9 +56,9 @@ export default function CourseTabs({
             tabIndex={isActive ? 0 : -1}
             onClick={() => onChange(tab.key)}
             onKeyDown={(event) => handleKeyDown(event, index)}
-            className={`cursor-pointer relative shrink-0 whitespace-nowrap rounded-lg px-3.5 py-2 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500 ${
+            className={`relative shrink-0 cursor-pointer whitespace-nowrap rounded-lg px-3.5 py-2 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500 ${
               isActive
-                ? "bg-violet-50 text-violet-600 after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-violet-500"
+                ? "bg-blue-50 text-blue-600 after:absolute after:inset-x-3 after:-bottom-px after:h-0.5 after:rounded-full after:bg-[#2563eb]"
                 : "text-slate-500 hover:bg-slate-100 hover:text-slate-700"
             }`}
           >

@@ -44,7 +44,7 @@ function TopPerformers() {
 
         <button
           type="button"
-          className="flex shrink-0 items-center gap-1 text-xs font-semibold text-violet-600 transition-colors hover:text-violet-800"
+          className="flex cursor-pointer shrink-0 items-center gap-1 text-xs font-semibold text-[#2563eb] transition-colors hover:text-[#1D4ED8]"
         >
           View All
           <ArrowRight className="h-3.5 w-3.5" />
@@ -70,11 +70,17 @@ function TopPerformers() {
               )}
             </div>
 
-            {/* Student Name and Progress Bar */}
+            {/* Student Name, Score and Full-Width Progress Bar */}
             <div className="min-w-0 flex-1">
-              <p className="mb-2 truncate text-xs font-semibold text-slate-800">
-                {student.name}
-              </p>
+              <div className="mb-2 flex items-center justify-between gap-2">
+                <p className="truncate text-xs font-semibold text-slate-800">
+                  {student.name}
+                </p>
+
+                <span className="shrink-0 text-sm font-bold tabular-nums text-slate-900">
+                  {student.score}%
+                </span>
+              </div>
 
               <div
                 className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100"
@@ -86,15 +92,14 @@ function TopPerformers() {
               >
                 <div
                   className="h-full rounded-full bg-violet-500 transition-all duration-300"
-                  style={{ width: `${student.score}%` }}
+                  style={{
+                    width: `${student.score}%`,
+                    background:
+                      "linear-gradient(90deg, #2563eb 0%, #60a5fa 100%)",
+                  }}
                 />
               </div>
             </div>
-
-            {/* Score */}
-            <span className="w-10 shrink-0 text-right text-sm font-bold tabular-nums text-slate-900">
-              {student.score}%
-            </span>
           </div>
         ))}
       </div>

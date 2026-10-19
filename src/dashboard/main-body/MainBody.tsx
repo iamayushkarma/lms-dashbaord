@@ -12,6 +12,7 @@ import RecentAssignments from "../components/RecentAssignments";
 import YourBadges from "../components/YourBadges";
 import HolidayAndLabSection from "../components/HolidayAndLabSection";
 import ActiveSessions from "../components/Sessions/ActiveSessions";
+import IndiaLearningMap from "../components/IndiaLearningMap";
 
 function MainBody() {
   return (
@@ -56,6 +57,7 @@ function MainBody() {
           <CreateAmazingLearningExperiences />
         </div>
         <YourBadges />
+        <IndiaLearningMap />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BookOpen, ChevronDown, MoreVertical, Play } from "lucide-react";
 import { quizAttempts, type QuizAttempt } from "../studentReportData";
+import ScoreRing from "./ScoreRing";
 
 function QuizStatusBadge({ status }: { status: QuizAttempt["status"] }) {
   const styles = {
@@ -21,28 +22,6 @@ function QuizStatusBadge({ status }: { status: QuizAttempt["status"] }) {
     >
       <span className={`h-2 w-2 rounded-full ${dots[status]}`} />
       {status}
-    </span>
-  );
-}
-
-function ScoreBadge({ score }: { score: number | null }) {
-  if (score === null) {
-    return <span className="text-xs text-slate-400">—</span>;
-  }
-
-  const color =
-    score >= 75
-      ? "bg-emerald-50 text-emerald-700"
-      : score >= 60
-        ? "bg-amber-50 text-amber-700"
-        : "bg-orange-50 text-orange-700";
-
-  return (
-    <span
-      className={`inline-flex  items-center gap-1 rounded-lg px-2 py-1 text-xs font-medium ${color}`}
-    >
-      <span className="h-2 w-2 rounded-full border-2 border-current" />
-      {score}%
     </span>
   );
 }
@@ -121,8 +100,12 @@ function QuizAttempts() {
                   </span>
                 </td>
 
-                <td className="px-2 py-3">
-                  <ScoreBadge score={quiz.score} />
+                <td className="px-4 py-3">
+                  {quiz.score !== null ? (
+                    <ScoreRing score={quiz.score} size={30} />
+                  ) : (
+                    <span className="text-xs text-slate-400">—</span>
+                  )}
                 </td>
 
                 <td className="whitespace-nowrap px-2 py-3 text-xs text-slate-500">

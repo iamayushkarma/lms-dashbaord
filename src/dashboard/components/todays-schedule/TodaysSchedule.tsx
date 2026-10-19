@@ -25,7 +25,7 @@ function TodaysSchedule({
         <button
           type="button"
           onClick={onSeeAll}
-          className="hidden shrink-0 cursor-pointer items-center gap-1 whitespace-nowrap rounded-md text-sm font-semibold text-violet-600 hover:text-violet-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 @[30rem]:inline-flex"
+          className="hidden shrink-0 cursor-pointer items-center gap-1 whitespace-nowrap rounded-md text-sm font-semibold text-blue-600 hover:text-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 @[30rem]:inline-flex"
         >
           See All
           <ArrowRightIcon />
@@ -49,7 +49,7 @@ function TodaysSchedule({
           <button
             type="button"
             onClick={onSeeAll}
-            className="mt-3 cursor-pointer inline-flex h-10 w-full items-center justify-center gap-1.5 rounded-lg bg-violet-50 text-sm font-semibold text-violet-600 transition-colors hover:bg-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 @[30rem]:hidden"
+            className="mt-3 inline-flex h-10 w-full cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-blue-50 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 @[30rem]:hidden"
           >
             View All
             <ArrowRightIcon />

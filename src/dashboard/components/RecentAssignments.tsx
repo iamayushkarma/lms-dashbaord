@@ -131,7 +131,7 @@ export default function RecentAssignments({
           type="button"
           onClick={handleViewAll}
           aria-expanded={showAll}
-          className="inline-flex cursor-pointer shrink-0 items-center gap-1 text-xs font-semibold text-violet-600 transition hover:text-violet-800 sm:text-sm"
+          className="inline-flex cursor-pointer shrink-0 items-center gap-1 text-xs font-semibold text-[#2563eb] transition  sm:text-sm"
         >
           {showAll ? "Show Less" : "View All"}
           <ArrowRight className="h-3.5 w-3.5" />

@@ -6,16 +6,16 @@ const dotThemes: Record<
   { dot: string; ring: string; from: string; to: string }
 > = {
   violet: {
-    dot: "bg-violet-500",
-    ring: "ring-violet-100",
-    from: "from-violet-300",
-    to: "to-violet-300",
+    dot: "bg-[#2563eb]",
+    ring: "ring-blue-100",
+    from: "from-[#2563eb]",
+    to: "to-[#2563eb]",
   },
   blue: {
-    dot: "bg-blue-400",
+    dot: "bg-[#2563eb]",
     ring: "ring-blue-100",
-    from: "from-blue-300",
-    to: "to-blue-300",
+    from: "from-[#2563eb]",
+    to: "to-[#2563eb]",
   },
   emerald: {
     dot: "bg-emerald-400",
@@ -33,8 +33,8 @@ const dotThemes: Record<
 
 const tileThemes: Record<TileColor, string> = {
   rose: "bg-rose-100 text-rose-500",
-  violet: "bg-violet-100 text-violet-600",
-  indigo: "bg-indigo-100 text-indigo-600",
+  violet: "bg-blue-50 text-[#2563eb]",
+  indigo: "bg-blue-100 text-[#2563eb]",
   emerald: "bg-emerald-100 text-emerald-600",
 };
 
@@ -56,7 +56,7 @@ export default function ScheduleItem({
 
   return (
     <li className="relative pl-7">
-      {/* Line: runs from this dot's center to the next dot's center */}
+      {/* Timeline connector */}
       {next && (
         <span
           aria-hidden
@@ -64,47 +64,50 @@ export default function ScheduleItem({
         />
       )}
 
-      {/* Dot (sits above the line, aligned with the time text) */}
+      {/* Timeline dot */}
       <span
         aria-hidden
         className={`absolute left-0 top-4 z-10 h-3 w-3 rounded-full ring-4 @[30rem]:top-[19px] ${dot.dot} ${dot.ring}`}
       />
 
       <div className="flex items-center gap-2 py-3 @[30rem]:gap-4">
-        {/* Time + course name below it (all sizes) */}
+        {/* Time and course name */}
         <div className="min-w-0 flex-1 @[30rem]:w-40 @[30rem]:flex-none @[30rem]:shrink-0">
           <p className="whitespace-nowrap text-sm font-medium text-slate-700">
             {event.time}
           </p>
+
           <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-slate-500">
             {event.title}
           </p>
         </div>
 
-        {/* Icon tile (wide card only) */}
+        {/* Icon tile — wide card only */}
         <span
           className={`hidden h-11 w-11 shrink-0 place-items-center rounded-xl @[30rem]:grid ${tileThemes[event.tileColor]}`}
         >
           <ScheduleIcon name={event.icon} />
         </span>
 
-        {/* Type + duration (wide card only) */}
+        {/* Type and duration — wide card only */}
         <div className="hidden min-w-0 flex-1 @[30rem]:block">
           <p className="flex items-center gap-1.5 text-sm text-slate-500">
             <span className="truncate">{event.type}</span>
+
             <span className="h-1 w-1 shrink-0 rounded-full bg-slate-300" />
+
             <span className="whitespace-nowrap">{event.duration}</span>
           </p>
         </div>
 
-        {/* Action button: small on narrow cards, full size on wide cards */}
+        {/* Action button */}
         <button
           type="button"
           onClick={() => onAction?.(event)}
-          className={`h-8 w-16 cursor-pointer shrink-0 rounded-lg text-xs font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-500 @[30rem]:h-10 @[30rem]:w-28 @[30rem]:text-sm ${
+          className={`h-8 w-16 shrink-0 cursor-pointer rounded-lg text-xs font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb] @[30rem]:h-10 @[30rem]:w-28 @[30rem]:text-sm ${
             isLive
-              ? "bg-violet-600 text-white shadow-sm hover:bg-violet-700"
-              : "bg-violet-50 text-violet-600 hover:bg-violet-100"
+              ? "bg-[#2563eb] text-white shadow-sm hover:bg-[#1d4ed8] active:bg-[#1e40af]"
+              : "bg-blue-50 text-[#2563eb] hover:bg-[#dbeafe] active:bg-[#bfdbfe]"
           }`}
         >
           {isLive ? "Join" : "Start"}

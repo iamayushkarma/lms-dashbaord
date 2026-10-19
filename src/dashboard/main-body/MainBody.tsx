@@ -22,13 +22,12 @@ function MainBody() {
         <div className="shrink-0 overflow-hidden rounded-md">
           <HeaderImage />
         </div>
-
         <StatsCards />
         <StudentCourses />
 
-        {/* Charts: stacked on mobile, two columns on medium screens */}
-        <div className="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-[1.4fr_1.2fr_1fr]">
-          <div className="min-w-0 md:col-span-2 xl:col-span-1">
+        {/* Charts: responsive equal-width cards */}
+        <div className="grid w-full min-w-0 grid-cols-1 items-stretch gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="min-w-0">
             <StudentProgress />
           </div>
 

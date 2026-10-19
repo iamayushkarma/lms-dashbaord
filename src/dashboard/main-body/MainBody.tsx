@@ -10,6 +10,8 @@ import LearningJourney from "../components/LearningJourney";
 import CreateAmazingLearningExperiences from "../components/CreateAmazingLearningExperiences";
 import RecentAssignments from "../components/RecentAssignments";
 import YourBadges from "../components/YourBadges";
+import HolidayAndLabSection from "../components/HolidayAndLabSection";
+import ActiveSessions from "../components/Sessions/ActiveSessions";
 
 function MainBody() {
   return (
@@ -39,6 +41,8 @@ function MainBody() {
         </div>
 
         <RecentAssignments />
+        <ActiveSessions />
+        <HolidayAndLabSection />
       </div>
 
       {/* Right dashboard column */}

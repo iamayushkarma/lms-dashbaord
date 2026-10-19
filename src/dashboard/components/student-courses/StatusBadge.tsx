@@ -1,7 +1,10 @@
 import type { CourseStatus } from "./types";
 
 const badges: Record<CourseStatus, { label: string; className: string }> = {
-  "in-progress": { label: "In Progress", className: "bg-violet-500 text-white" },
+  "in-progress": {
+    label: "In Progress",
+    className: "bg-[#2563eb] text-white",
+  },
   completed: { label: "Completed", className: "bg-emerald-500 text-white" },
   "not-started": { label: "Not Started", className: "bg-white text-slate-800" },
 };

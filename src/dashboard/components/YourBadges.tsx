@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Award, ChevronRight, FolderOpen } from "lucide-react";
+import { Award, ArrowRight, FolderOpen } from "lucide-react";
 
 type BadgeItem = {
   id: number;
@@ -54,10 +54,10 @@ export default function YourBadges({
           type="button"
           onClick={handleViewAll}
           aria-expanded={showAll}
-          className="inline-flex cursor-pointer shrink-0 items-center gap-1 text-xs font-medium text-slate-500 transition hover:text-indigo-600 sm:text-sm"
+          className="inline-flex cursor-pointer shrink-0 items-center gap-1 text-xs font-medium text-[#2563eb] transition  sm:text-sm"
         >
           {showAll ? "Show Less" : "View All"}
-          <ChevronRight
+          <ArrowRight
             className={`h-3.5 w-3.5 transition-transform ${
               showAll ? "rotate-90" : ""
             }`}

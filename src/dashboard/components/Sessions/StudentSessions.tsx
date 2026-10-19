@@ -1,4 +1,4 @@
-import { ArrowUpRight, BookOpen, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Users } from "lucide-react";
 import { useState } from "react";
 import type { SessionPanelProps } from "./types";
 
@@ -97,7 +97,7 @@ export default function StudentSessions({ sessions }: SessionPanelProps) {
           className="mt-3 cursor-pointer flex w-full shrink-0 items-center justify-center gap-1.5 rounded-lg border border-sky-100 py-2.5 text-xs font-semibold text-[#2563eb] transition-colors hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
         >
           {showAll ? "Show Less" : "View All"}
-          <ArrowUpRight size={14} className={showAll ? "rotate-180" : ""} />
+          <ArrowRight size={14} className={showAll ? "rotate-180" : ""} />
         </button>
       )}
     </section>

@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import learningJourney from "../../assets/Learning_Journey_Mountain_Dashboard.png";
 
 export default function LearningJourney() {
@@ -12,10 +12,10 @@ export default function LearningJourney() {
 
         <button
           type="button"
-          className="flex cursor-pointer items-center gap-1 text-xs font-semibold text-indigo-500 transition hover:text-indigo-700"
+          className="flex cursor-pointer items-center gap-1 text-xs font-semibold text-[#2563eb] transition"
         >
           View Details
-          <ArrowUpRight size={14} />
+          <ArrowRight size={14} />
         </button>
       </div>
 

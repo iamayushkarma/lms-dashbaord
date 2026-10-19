@@ -37,6 +37,7 @@ function StudentCourses({
   const [activeTab, setActiveTab] = useState<TabKey>("all");
   const [sortBy, setSortBy] = useState<SortKey>("recent");
   const [bookmarks, setBookmarks] = useState<Set<string>>(new Set());
+  const [showAllCourses, setShowAllCourses] = useState(false);
 
   const tabs: TabItem[] = useMemo(
     () => [
@@ -68,6 +69,8 @@ function StudentCourses({
     return sortCourses(byTab, sortBy);
   }, [courses, activeTab, sortBy]);
 
+  const displayedCourses = showAllCourses ? visible : visible.slice(0, 6);
+
   function toggleBookmark(id: string) {
     setBookmarks((prev) => {
       const next = new Set(prev);
@@ -82,7 +85,9 @@ function StudentCourses({
       {/* Header */}
       <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex min-w-0 flex-col gap-3 md:flex-row md:items-center md:gap-8">
-          <h2 className="text-xl font-bold text-slate-900">My Courses</h2>
+          <h2 className="text-lg xl:text-xl w-full-[100px] font-bold text-slate-900">
+            My Courses
+          </h2>
           <CourseTabs
             tabs={tabs}
             active={activeTab}
@@ -110,10 +115,13 @@ function StudentCourses({
 
           <button
             type="button"
-            onClick={onViewAll}
-            className="inline-flex  cursor-pointer h-10 items-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 px-4 text-sm font-semibold text-violet-600 transition-colors hover:bg-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500"
+            onClick={() => {
+              setShowAllCourses((previous) => !previous);
+              onViewAll?.();
+            }}
+            className="inline-flex h-10 cursor-pointer items-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 px-4 text-sm font-semibold text-violet-600 transition-colors hover:bg-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet-500"
           >
-            View All
+            {showAllCourses ? "Show Less" : "View All"}
             <ArrowRightIcon />
           </button>
         </div>
@@ -123,11 +131,15 @@ function StudentCourses({
       <div
         id={PANEL_ID}
         role="tabpanel"
-        className="max-h-[450px] overflow-y-auto p-1 pr-2 min-[1400px]:max-h-none min-[1400px]:overflow-visible"
+        className="max-h-[460px] overflow-y-auto p-1 pr-2 min-[1400px]:max-h-none min-[1400px]:overflow-visible"
       >
         {visible.length > 0 ? (
-          <div className="grid grid-cols-2 gap-4 min-[1400px]:grid-cols-4 min-[1400px]:[&>*:nth-child(n+5)]:hidden">
-            {visible.map((course) => (
+          <div
+            className={`grid grid-cols-2 gap-4 min-[1400px]:grid-cols-4 ${
+              !showAllCourses ? "min-[1400px]:[&>*:nth-child(n+5)]:hidden" : ""
+            }`}
+          >
+            {displayedCourses.map((course) => (
               <CourseCard
                 key={course.id}
                 course={course}

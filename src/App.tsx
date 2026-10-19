@@ -5,10 +5,10 @@ import StudentReport from "./studentReport/StudentReport";
 function App() {
   return (
     <>
-      <div>{/* <Dashboard /> */}</div>
       <div>
-        <StudentReport />
+        <Dashboard />
       </div>
+      <div>{/* <StudentReport /> */}</div>
     </>
   );
 }

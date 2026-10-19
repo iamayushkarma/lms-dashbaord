@@ -6,23 +6,26 @@ interface ScoreRingProps {
 export default function ScoreRing({ score, size = 30 }: ScoreRingProps) {
   const normalizedScore = Math.max(0, Math.min(100, score));
 
-  const gradientColors =
+  const colors =
     normalizedScore >= 75
       ? ["#86EFAC", "#07803D"]
       : normalizedScore >= 50
         ? ["#FDE68A", "#E9A23B"]
         : ["#FDA4AF", "#E11D48"];
 
+  // Variant 2: Normal solid-color ring
+  // const solidColor =
+  //   normalizedScore >= 75
+  //     ? "#16A34A"
+  //     : normalizedScore >= 50
+  //       ? "#E9A23B"
+  //       : "#E11D48";
+
   const strokeWidth = 3.5;
   const center = size / 2;
   const radius = (size - strokeWidth) / 2;
-  //   const circumference = 2 * Math.PI * radius;
-
-  //   const progress = (normalizedScore / 100) * circumference;
   const progressAngle = (normalizedScore / 100) * 360;
-
   const segmentCount = Math.max(1, Math.ceil(progressAngle / 4));
-
   const startAngle = -90;
   const gapAngle = 1.5;
 
@@ -38,6 +41,7 @@ export default function ScoreRing({ score, size = 30 }: ScoreRingProps) {
   function getColor(start: string, end: string, t: number) {
     const hexToRgb = (hex: string) => {
       const value = hex.replace("#", "");
+
       return [
         parseInt(value.slice(0, 2), 16),
         parseInt(value.slice(2, 4), 16),
@@ -66,10 +70,8 @@ export default function ScoreRing({ score, size = 30 }: ScoreRingProps) {
         width={size}
         height={size}
         viewBox={`0 0 ${size} ${size}`}
-        className="overflow-visible"
         aria-hidden="true"
       >
-        {/* Background track */}
         <circle
           cx={center}
           cy={center}
@@ -79,7 +81,6 @@ export default function ScoreRing({ score, size = 30 }: ScoreRingProps) {
           strokeWidth={strokeWidth}
         />
 
-        {/* Progress arc with a gradient following the stroke */}
         {normalizedScore > 0 &&
           Array.from({ length: segmentCount }, (_, index) => {
             const segmentStart =
@@ -102,8 +103,8 @@ export default function ScoreRing({ score, size = 30 }: ScoreRingProps) {
             const largeArc = visibleEnd - visibleStart > 180 ? 1 : 0;
 
             const color = getColor(
-              gradientColors[0],
-              gradientColors[1],
+              colors[0],
+              colors[1],
               index / Math.max(1, segmentCount - 1),
             );
 
@@ -118,9 +119,25 @@ export default function ScoreRing({ score, size = 30 }: ScoreRingProps) {
               />
             );
           })}
+
+        {/*
+          Variant 2: Normal solid-color ring
+          Replace the segmented paths above with this circle.
+
+          <circle
+            cx={center}
+            cy={center}
+            r={radius}
+            fill="none"
+            stroke={solidColor}
+            strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeDasharray={`${(normalizedScore / 100) * 2 * Math.PI * radius} ${2 * Math.PI * radius}`}
+            transform={`rotate(-90 ${center} ${center})`}
+          />
+        */}
       </svg>
 
-      {/* Center score */}
       <span
         className="absolute inset-0 flex items-center justify-center font-semibold leading-none text-slate-700"
         style={{ fontSize: Math.max(8, size * 0.3) }}

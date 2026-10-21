@@ -12,7 +12,11 @@ type AvatarStackProps = {
   max?: number;
 };
 
-export default function AvatarStack({ avatars, more = 0, max = 4 }: AvatarStackProps) {
+export default function AvatarStack({
+  avatars,
+  more = 0,
+  max = 4,
+}: AvatarStackProps) {
   return (
     <div className="flex items-center">
       <div className="flex -space-x-2">

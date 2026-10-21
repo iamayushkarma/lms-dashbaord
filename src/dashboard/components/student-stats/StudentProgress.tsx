@@ -37,7 +37,7 @@ function LegendItem({ color, label }: { color: string; label: string }) {
 
 function StudentProgress() {
   return (
-    <section className="min-w-0 rounded-xl border border-slate-100 bg-white p-4 shadow-[0_2px_10px_rgba(37,99,235,0.06)]">
+    <section className="min-w-0 h-full rounded-xl border border-slate-100 bg-white p-4 shadow-[0_2px_10px_rgba(37,99,235,0.06)]">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <h3 className="text-sm font-bold text-slate-900">Student Progress</h3>
 

@@ -1,5 +1,5 @@
 import HeaderImage from "../components/HeaderImage";
-import Calendar from "../components/Calander";
+import Calendar from "../components/Calender";
 import StatsCards from "../components/StatsCards";
 import StudentCourses from "../components/student-courses/StudentCourses";
 import StudentProgress from "../components/student-stats/StudentProgress";

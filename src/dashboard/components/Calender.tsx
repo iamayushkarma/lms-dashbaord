@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type CalendarProps = {
   value?: Date;
@@ -45,7 +46,7 @@ export default function Calendar({ value, onChange }: CalendarProps) {
             onClick={() => changeMonth(-1)}
             className={`grid h-6 w-6 cursor-pointer place-items-center rounded-md hover:bg-slate-100 ${focusRing}`}
           >
-            <Chevron direction="left" />
+            <ChevronLeft size={16} strokeWidth={1.8} />
           </button>
 
           <button
@@ -62,7 +63,7 @@ export default function Calendar({ value, onChange }: CalendarProps) {
             onClick={() => changeMonth(1)}
             className={`grid h-6 w-6 cursor-pointer place-items-center rounded-md hover:bg-slate-100 ${focusRing}`}
           >
-            <Chevron direction="right" />
+            <ChevronRight size={16} strokeWidth={1.8} />
           </button>
         </div>
       </div>
@@ -100,28 +101,5 @@ export default function Calendar({ value, onChange }: CalendarProps) {
         }}
       />
     </div>
-  );
-}
-
-function Chevron({ direction }: { direction: "left" | "right" }) {
-  const path =
-    direction === "left" ? "M10 3.5 5.5 8l4.5 4.5" : "M6 3.5 10.5 8 6 12.5";
-
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d={path}
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
   );
 }

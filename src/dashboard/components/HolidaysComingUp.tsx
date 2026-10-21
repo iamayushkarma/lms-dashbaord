@@ -14,8 +14,8 @@ export default function HolidaysComingUp({
   holidays = [
     {
       name: "Diwali",
-      date: "Monday 19 October",
-      status: "today",
+      date: "Sunday 8,November",
+      status: "upcoming",
     },
   ],
 }: HolidaysComingUpProps) {

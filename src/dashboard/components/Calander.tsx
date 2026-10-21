@@ -51,7 +51,7 @@ export default function Calendar({ value, onChange }: CalendarProps) {
           <button
             type="button"
             onClick={goToToday}
-            className={`rounded-lg border border-slate-200 bg-white px-3.5 py-1 text-xs font-semibold shadow-sm hover:bg-slate-50 ${focusRing}`}
+            className={`rounded-lg cursor-pointer border border-slate-200 bg-white px-3.5 py-1 text-xs font-semibold shadow-sm hover:bg-slate-50 ${focusRing}`}
           >
             Today
           </button>

@@ -1,47 +1,97 @@
-import { ArrowRight, BookOpen, Users } from "lucide-react";
+import { ArrowRight, Users } from "lucide-react";
 import { useState } from "react";
-import type { SessionPanelProps } from "./types";
+import type { LucideIcon } from "lucide-react";
+import type { Session } from "./types";
 
-export default function StudentSessions({ sessions }: SessionPanelProps) {
+interface SessionPanelProps {
+  title: string;
+  sessions: Session[];
+  icon: LucideIcon;
+  theme: "sky" | "violet";
+  participantLabel: string;
+  instructorPrefix?: string;
+  emptyMessage: string;
+}
+
+const themeStyles = {
+  sky: {
+    border: "border-sky-100",
+    iconBg: "bg-sky-50",
+    iconText: "text-sky-600",
+    countBg: "bg-sky-50",
+    countText: "text-sky-700",
+    hoverBorder: "hover:border-sky-200",
+    hoverBg: "hover:bg-sky-50/40",
+    buttonBorder: "border-sky-100",
+    buttonHover: "hover:bg-sky-50",
+    ring: "focus-visible:ring-sky-500",
+  },
+  violet: {
+    border: "border-violet-100",
+    iconBg: "bg-violet-50",
+    iconText: "text-violet-600",
+    countBg: "bg-violet-50",
+    countText: "text-violet-700",
+    hoverBorder: "hover:border-violet-200",
+    hoverBg: "hover:bg-violet-50/40",
+    buttonBorder: "border-violet-100",
+    buttonHover: "hover:bg-violet-50",
+    ring: "focus-visible:ring-violet-500",
+  },
+};
+
+export default function SessionPanel({
+  title,
+  sessions,
+  icon: Icon,
+  theme,
+  participantLabel,
+  instructorPrefix = "",
+  emptyMessage,
+}: SessionPanelProps) {
   const [showAll, setShowAll] = useState(false);
-
   const VISIBLE_SESSIONS = 10;
+  const styles = themeStyles[theme];
 
   const displayedSessions = showAll
     ? sessions
     : sessions.slice(0, VISIBLE_SESSIONS);
 
   return (
-    <section className="flex h-[360px] min-w-0 flex-col overflow-hidden rounded-2xl border border-sky-100 bg-white p-4 shadow-sm sm:p-5">
+    <section
+      className={`flex h-[360px] min-w-0 flex-col overflow-hidden rounded-2xl border ${styles.border} bg-white p-4 shadow-sm sm:p-5`}
+    >
       <header className="mb-4 flex shrink-0 items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
-            <BookOpen size={20} />
+          <div
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${styles.iconBg} ${styles.iconText}`}
+          >
+            <Icon size={21} />
           </div>
 
           <div className="min-w-0">
             <h3 className="text-sm font-bold text-slate-900 sm:text-base">
-              Student Sessions
+              {title}
             </h3>
-
             <p className="mt-0.5 text-xs text-slate-500">
               {sessions.length} sessions
             </p>
           </div>
         </div>
 
-        <span className="shrink-0 rounded-lg bg-sky-50 px-2.5 py-1 text-sm font-bold text-sky-700">
+        <span
+          className={`shrink-0 rounded-lg ${styles.countBg} px-2.5 py-1 text-sm font-bold ${styles.countText}`}
+        >
           {sessions.length}
         </span>
       </header>
 
-      {/* Only this area scrolls */}
-      <div className="min-h-0 flex-1 space-y-2.5 overflow-y-auto overscroll-contain pr-1">
+      <div className="courses-scrollbar min-h-0 flex-1 space-y-2.5 overflow-y-auto overscroll-contain pr-1">
         {displayedSessions.length > 0 ? (
           displayedSessions.map((session) => (
             <article
               key={session.id}
-              className="rounded-xl border border-slate-100 bg-slate-50/70 p-3 transition-colors hover:border-sky-200 hover:bg-sky-50/40"
+              className={`rounded-xl border border-slate-100 bg-slate-50/70 p-3 transition-colors ${styles.hoverBorder} ${styles.hoverBg}`}
             >
               <div className="flex items-start justify-between gap-2">
                 <h4 className="min-w-0 text-sm font-semibold leading-5 text-slate-800">
@@ -67,13 +117,16 @@ export default function StudentSessions({ sessions }: SessionPanelProps) {
               </div>
 
               <p className="mt-1 text-xs text-slate-500">
-                Hosted by {session.instructor}
+                {instructorPrefix}
+                {session.instructor}
               </p>
 
               <div className="mt-3 flex items-center justify-between gap-2 border-t border-slate-200/70 pt-2.5">
                 <span className="inline-flex min-w-0 items-center gap-1.5 text-xs text-slate-500">
                   <Users size={14} className="shrink-0" />
-                  <span>{session.participants} participants</span>
+                  <span>
+                    {session.participants} {participantLabel}
+                  </span>
                 </span>
 
                 <span className="shrink-0 text-xs font-medium text-slate-500">
@@ -84,7 +137,7 @@ export default function StudentSessions({ sessions }: SessionPanelProps) {
           ))
         ) : (
           <p className="rounded-xl border border-dashed border-slate-200 px-3 py-8 text-center text-xs text-slate-500">
-            No student sessions available
+            {emptyMessage}
           </p>
         )}
       </div>
@@ -94,7 +147,7 @@ export default function StudentSessions({ sessions }: SessionPanelProps) {
           type="button"
           aria-expanded={showAll}
           onClick={() => setShowAll((previous) => !previous)}
-          className="mt-3 cursor-pointer flex w-full shrink-0 items-center justify-center gap-1.5 rounded-lg border border-sky-100 py-2.5 text-xs font-semibold text-[#2563eb] transition-colors hover:bg-sky-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500"
+          className={`mt-3 flex w-full shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-lg border ${styles.buttonBorder} py-2.5 text-xs font-semibold text-[#2563eb] transition-colors ${styles.buttonHover} focus-visible:outline-none focus-visible:ring-2 ${styles.ring}`}
         >
           {showAll ? "Show Less" : "View All"}
           <ArrowRight size={14} className={showAll ? "rotate-180" : ""} />

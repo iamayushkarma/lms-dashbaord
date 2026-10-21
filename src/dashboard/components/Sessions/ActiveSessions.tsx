@@ -1,6 +1,5 @@
-import { Radio } from "lucide-react";
-import TeacherSessions from "./TeacherSessions";
-import StudentSessions from "./StudentSessions";
+import { BookOpen, GraduationCap, Radio } from "lucide-react";
+import SessionPanel from "./SessionPanel";
 import type { Session } from "./types";
 
 // Demo teacher sessions — replace with API data.
@@ -238,8 +237,24 @@ export default function ActiveSessions() {
       </header>
 
       <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-2">
-        <TeacherSessions sessions={teacherSessions} />
-        <StudentSessions sessions={studentSessions} />
+        <SessionPanel
+          title="Teacher Sessions"
+          sessions={teacherSessions}
+          icon={GraduationCap}
+          theme="violet"
+          participantLabel="students"
+          emptyMessage="No teacher sessions available"
+        />
+
+        <SessionPanel
+          title="Student Sessions"
+          sessions={studentSessions}
+          icon={BookOpen}
+          theme="sky"
+          participantLabel="participants"
+          instructorPrefix="Hosted by "
+          emptyMessage="No student sessions available"
+        />
       </div>
     </section>
   );
